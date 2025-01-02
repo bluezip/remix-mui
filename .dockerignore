@@ -1,0 +1,8 @@
+node_modules
+.strapi
+.tmp
+build
+.git
+.gitignore
+.env
+yarn.lock

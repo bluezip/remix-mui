@@ -17,7 +17,9 @@ app.use(viteDevServer ? viteDevServer.middlewares : express.static('build/client
 const build = viteDevServer ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build') : await import('./build/server/index.js')
 
 app.all('*', createRequestHandler({ build }))
-
-app.listen(3000, () => {
-  console.log('App listening on http://localhost:3000')
+const port = process.env.PORT || 3000
+const strapi_url = process.env.STRAPI_URL || 'http://localhost:1337'
+app.listen(port, () => {
+  console.log(`API url: ${strapi_url}`)
+  console.log(`App listening on http://localhost:${port}`)
 })
