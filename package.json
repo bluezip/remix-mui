@@ -27,13 +27,16 @@
     "cross-env": "^7.0.3",
     "express": "^4.19.2",
     "isbot": "^4.1.0",
+    "qs": "^6.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
     "winston": "^3.17.0"
   },
   "devDependencies": {
     "@makerx/prettier-config": "^2.0.1",
     "@remix-run/dev": "^2.9.2",
+    "@types/qs": "^6.9.17",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",

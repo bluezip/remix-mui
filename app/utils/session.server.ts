@@ -1,7 +1,7 @@
 import { createCookieSessionStorage, redirect } from '@remix-run/node'
 import log from '~/utils/logger'
 
-const sessionSecret = process.env.SESSION_SECRET
+const sessionSecret = process.env.SESSION_SECRET || 'e29c09ec-321a-4d62-a124-4a13c0cb5edc'
 if (!sessionSecret) throw new Error('Please set the SESSION_SECRET environment variable')
 
 const { getSession, commitSession, destroySession } = createCookieSessionStorage({
