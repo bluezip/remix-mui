@@ -1,4 +1,4 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useRouteError } from '@remix-run/react'
 
 import { LinksFunction } from '@remix-run/node'
 import { MuiDocument } from './components/mui/MuiDocument'
@@ -17,7 +17,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <MuiMeta />
         <Links />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -33,5 +33,24 @@ export default function App() {
         <Outlet />
       </MuiDocument>
     </>
+  )
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError()
+  return (
+    <html>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <h1>
+          {isRouteErrorResponse(error) ? `${error.status} ${error.statusText}` : error instanceof Error ? error.message : 'Unknown Error'}
+        </h1>
+        <Scripts />
+      </body>
+    </html>
   )
 }
