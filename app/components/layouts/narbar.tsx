@@ -35,6 +35,7 @@ function MyAppBar({
   const isDesktop = useMediaQuery((theme) => theme.breakpoints.up('sm'))
   const location = useLocation()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [anchorE2, setAnchorE2] = useState<null | HTMLElement>(null)
   const fetcher = useFetcher()
   const { user } = userData || {}
 
@@ -47,11 +48,21 @@ function MyAppBar({
       name: 'Logout',
     },
   ]
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
+
+  const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorE2(event.currentTarget)
+  }
+
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleClose2 = () => {
+    setAnchorE2(null)
   }
 
   const isActive = (link) => location.pathname === link
@@ -114,18 +125,36 @@ function MyAppBar({
               </>
             )}
           </Typography>
-          {user && (
+          {isDesktop && user && (
             <Button color="inherit" sx={{ marginLeft: '10px' }} href="/profile">
               {user.username}
             </Button>
           )}
-
-          {user &&
+          {isDesktop &&
+            user &&
+            isDesktop &&
             rightMenu.map((menu) => (
               <Button key={menu.name} color="inherit" onClick={menu.func}>
                 {menu.name}
               </Button>
             ))}
+          {!isDesktop && user && (
+            <Button color="inherit" onClick={handleClick2} sx={{ marginLeft: '10px' }}>
+              {user.username}
+            </Button>
+          )}
+          {!isDesktop && user && (
+            <Menu anchorEl={anchorE2} open={Boolean(anchorE2)} onClose={handleClose2}>
+              <MenuItem key={user?.username} href="/profile" sx={{ width: '100vw', left: 0 }} onClick={handleClose2} component="a">
+                Profile
+              </MenuItem>
+              {rightMenu.map((menu) => (
+                <MenuItem key={menu.name} onClick={menu.func} sx={{ width: '100vw', left: 0 }}>
+                  {menu.name}
+                </MenuItem>
+              ))}
+            </Menu>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
@@ -146,6 +175,7 @@ function Navbar({ setOpen, drawerWidth = 250 }: { setOpen: (newOpen: boolean) =>
     }
     fetchUserData()
   }, [])
+
   return <MyAppBar setOpen={setOpen} drawerWidth={drawerWidth} userData={user} />
 }
 

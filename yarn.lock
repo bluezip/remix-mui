@@ -273,17 +273,17 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@date-io/core@^1.3.13":
-  version "1.3.13"
-  resolved "https://registry.npmjs.org/@date-io/core/-/core-1.3.13.tgz"
-  integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
+"@date-io/core@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-3.2.0.tgz#7c8985ac26ccacf4f1b1fec10e2e22c75a28288a"
+  integrity sha512-hqwXvY8/YBsT9RwQITG868ZNb1MVFFkF7W1Ecv4P472j/ZWa7EFcgSmxy8PUElNVZfvhdvfv+a8j6NWJqOX5mA==
 
-"@date-io/dayjs@1.3.13":
-  version "1.3.13"
-  resolved "https://registry.npmjs.org/@date-io/dayjs/-/dayjs-1.3.13.tgz"
-  integrity sha512-nD39xWYwQjDMIdpUzHIcADHxY9m1hm1DpOaRn3bc2rBdgmwQC0PfW0WYaHyGGP/6LEzEguINRbHuotMhf+T9Sg==
+"@date-io/dayjs@^3.0.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-3.2.0.tgz#87475a87ca8d9a53106a0c4bf882ff1621147aea"
+  integrity sha512-+3LV+3N+cpQbEtmrFo8odg07k02AFY7diHgbi2EKYYANOOCPkDYUjDr2ENiHuYNidTs3tZwzDKckZoVNN4NXxg==
   dependencies:
-    "@date-io/core" "^1.3.13"
+    "@date-io/core" "^3.2.0"
 
 "@emotion/babel-plugin@^11.13.5":
   version "11.13.5"
@@ -827,29 +827,29 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@jsonforms/core@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/@jsonforms/core/-/core-3.2.0.tgz"
-  integrity sha512-Ub5aRawZqD/3Ndph/9h1ItCQhS7wr4jM+G+6CIQ2GHjcNo9N6MbpLjEMb3e/FFYfgGi0bxuO1v9xgoC2hOz41Q==
+"@jsonforms/core@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@jsonforms/core/-/core-3.5.1.tgz#1c8aa9323bb80677bbd538022f4d8e039516fef0"
+  integrity sha512-Jrq/UcfvKsAprLJ+9TMFa8pKsfdyv3dAw85XstSNRcjDT19LreBlhVqIvTvtgZidg8Iet3yqy5xlNnB+XyrvrQ==
   dependencies:
     "@types/json-schema" "^7.0.3"
     ajv "^8.6.1"
     ajv-formats "^2.1.0"
     lodash "^4.17.21"
 
-"@jsonforms/material-renderers@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/@jsonforms/material-renderers/-/material-renderers-3.2.0.tgz"
-  integrity sha512-ZJWRphatlX+t0T6ztYYx4NHzZpI9qcUL6r8CWhwTz9aQ9kZS6VGsYJ7yxnABcOYyH2pS2d8M5rASWspOb5CB1g==
+"@jsonforms/material-renderers@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@jsonforms/material-renderers/-/material-renderers-3.5.1.tgz#9936621f141a6d77ccb1e904cd82cc186042f323"
+  integrity sha512-IJczFIHE7kNycazXMpee5HshEZY9At5q4f6qnb4BOqQ1LAkuYAHaZ82tvzG8l0SJHmdv83VqFYkASmWTpcK0lw==
   dependencies:
-    "@date-io/dayjs" "1.3.13"
+    "@date-io/dayjs" "^3.0.0"
     dayjs "1.10.7"
     lodash "^4.17.21"
 
-"@jsonforms/react@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/@jsonforms/react/-/react-3.2.0.tgz"
-  integrity sha512-k9oub73ONPHjpqRhlW9bRwqbXNNae5UW2U5LzOqRoRuYsRmX8ySQA6NINYbKnh+qfzr8uG+lIyS8wHSf2Y7zzA==
+"@jsonforms/react@^3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@jsonforms/react/-/react-3.5.1.tgz#30e3b75afaf678848ca7f7fb0d39c8499a719e96"
+  integrity sha512-fQwCpzyNcf0FruYhc46dK6GfCcX09HkRX2PGYir7dllQPRI1axHd6t98To/h+48/L2PkFdRMGMCcIsoTXNC1qg==
   dependencies:
     lodash "^4.17.21"
 

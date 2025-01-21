@@ -1,12 +1,17 @@
 import { materialCells, materialRenderers } from '@jsonforms/material-renderers'
 import { JsonForms } from '@jsonforms/react'
 import * as Icons from '@mui/icons-material'
-import { Box, Button, Tab, Tabs, Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import { LoaderFunctionArgs } from '@remix-run/server-runtime'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Layout from '~/components/layouts/layouts'
+import DocxExample from './DocxExample'
+import MarkdownExample from './MarkdownExample'
+import type { Tab } from './TabsExample'
+import TabsExample from './TabsExample'
+import docxImage from './docx.jpg'
 
 const schema = {
   type: 'object',
@@ -150,56 +155,38 @@ const initialData = {
   ],
 }
 
+const markdown = ` 
+# ตัวอย่าง นี่คือตัวอย่างการใช้ Markdown ใน React 
+  - รายการแบบ 1 
+  - รายการแบบ 2 
+  - รายการแบบ 3
+`
+
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   return json({
     id: params.id,
   })
 }
 
-interface TabPanelProps {
-  children?: React.ReactNode
-  index: number
-  value: number
-}
-
-interface Tab {
-  label: string
-  index: number
-  content: React.ReactNode
-}
-
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  )
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  }
-}
-
 export default function TemporaryDrawer() {
   const { id } = useLoaderData<typeof loader>()
-  const [value, setValue] = useState(2)
   const [data, setData] = useState<object>(initialData)
   const [isBookmarked, setIsBookmarked] = useState(false)
   const handleBookmarkClick = () => {
     setIsBookmarked(!isBookmarked)
   }
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
-  }
 
   const tabs: Tab[] = [
-    { label: 'ตัวอย่าง', index: 0, content: 'Item One' },
-    { label: 'คู่มือ', index: 1, content: 'Item Two' },
+    {
+      label: 'ตัวอย่าง',
+      index: 0,
+      content: (
+        <>
+          <DocxExample docxImages={[docxImage, docxImage]} />
+        </>
+      ),
+    },
+    { label: 'คู่มือ', index: 1, content: <MarkdownExample markdown={markdown} /> },
     {
       label: 'เอกสาร',
       index: 2,
@@ -228,31 +215,20 @@ export default function TemporaryDrawer() {
         />
       ),
     },
-    { label: 'Share', index: 4, content: 'Share' },
+    { label: 'ล่าสุด', index: 4, content: 'Recent' },
+    { label: 'Share', index: 5, content: 'Share' },
   ]
 
   return (
     <div>
       <Layout>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Typography variant="h3">
-            <Button onClick={handleBookmarkClick} style={{ cursor: 'pointer' }} variant="text">
-              {isBookmarked ? <Icons.Bookmark /> : <Icons.BookmarkBorder />}
-            </Button>
-            สร้างเอกสาร {id}
-          </Typography>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="scrollable" scrollButtons="auto">
-            {tabs.map((tab) => (
-              <Tab key={tab.index} label={tab.label} {...a11yProps(tab.index)} />
-            ))}
-          </Tabs>
-        </Box>
-
-        {tabs.map((tab) => (
-          <CustomTabPanel key={tab.index} value={value} index={tab.index}>
-            {tab.content}
-          </CustomTabPanel>
-        ))}
+        <Typography variant="h3">
+          <Button onClick={handleBookmarkClick} style={{ cursor: 'pointer' }} variant="text">
+            {isBookmarked ? <Icons.Bookmark /> : <Icons.BookmarkBorder />}
+          </Button>
+          สร้างเอกสาร {id}
+        </Typography>
+        <TabsExample tabs={tabs} />
       </Layout>
     </div>
   )

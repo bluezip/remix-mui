@@ -22,6 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          mt: 2,
         }}
       >
         {children}
