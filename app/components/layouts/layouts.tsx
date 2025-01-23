@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import { useState } from 'react'
 
-import Navbar from '~/components/layouts/narbar'
+import Navbar from '~/components/layouts/Navbar'
 import Sidebar from '~/components/layouts/sidebar'
 import ClientOnly from '~/utils/ClientOnly'
 
