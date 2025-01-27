@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import Layout from '~/components/layouts/layouts'
+import Layout from '~/components/layouts/Layouts'
 export default function AllDocs() {
   return (
     <Layout>

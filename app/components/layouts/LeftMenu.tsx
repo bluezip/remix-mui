@@ -1,6 +1,6 @@
 // LeftMenu.tsx
 import { Button, Menu, MenuItem } from '@mui/material'
-import { useLocation } from '@remix-run/react'
+import { Link, useLocation } from '@remix-run/react'
 import { useState } from 'react'
 
 const leftMenu = [
@@ -26,7 +26,13 @@ const LeftMenu = ({ isDesktop }: LeftMenuProps) => {
   return (
     <>
       {leftMenu.slice(0, 1).map((menu) => (
-        <Button key={menu.name} color="inherit" href={menu.link} sx={{ bgcolor: isActive(menu.link) ? 'rgba(0, 0, 0, 0.08)' : 'inherit' }}>
+        <Button
+          key={menu.name}
+          color="inherit"
+          component={Link}
+          to={menu.link || ''}
+          sx={{ bgcolor: isActive(menu.link) ? 'rgba(0, 0, 0, 0.08)' : 'inherit' }}
+        >
           {menu.name}
         </Button>
       ))}
@@ -36,7 +42,8 @@ const LeftMenu = ({ isDesktop }: LeftMenuProps) => {
           <Button
             key={menu.name}
             color="inherit"
-            href={menu.link}
+            component={Link}
+            to={menu.link || ''}
             sx={{ bgcolor: isActive(menu.link) ? 'rgba(0, 0, 0, 0.08)' : 'inherit' }}
           >
             {menu.name}
@@ -53,8 +60,8 @@ const LeftMenu = ({ isDesktop }: LeftMenuProps) => {
               <MenuItem
                 key={menu.name}
                 onClick={handleClose}
-                component="a"
-                href={menu.link}
+                component={Link}
+                to={menu.link || ''}
                 sx={{ bgcolor: isActive(menu.link) ? 'rgba(0, 0, 0, 0.08)' : 'inherit', width: '100vw', left: 0 }}
               >
                 {menu.name}

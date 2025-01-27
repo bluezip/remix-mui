@@ -27,7 +27,7 @@ const MyAppBar = ({ setOpen, drawerWidth, userData, logout }: MyAppBarProps) => 
           <Typography component="div" sx={{ flexGrow: 1 }}>
             <LeftMenu isDesktop={isDesktop} />
           </Typography>
-          {userData && <UserMenu isDesktop={isDesktop} user={userData.user} logout={logout} />}
+          {userData && <UserMenu isDesktop={isDesktop} userData={userData} logout={logout} />}
         </Toolbar>
       </Container>
     </AppBar>

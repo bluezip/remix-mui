@@ -6,7 +6,7 @@ import { json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import { LoaderFunctionArgs } from '@remix-run/server-runtime'
 import React, { useState } from 'react'
-import Layout from '~/components/layouts/layouts'
+import Layout from '~/components/layouts/Layouts'
 
 const schema = {
   type: 'object',

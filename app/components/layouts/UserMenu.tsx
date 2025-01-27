@@ -1,18 +1,19 @@
 import { Button, Menu, MenuItem } from '@mui/material'
-import { useLocation } from '@remix-run/react'
+import { Link, useLocation } from '@remix-run/react'
 import { useState } from 'react'
-import { RootUser } from '~/utils/types'
+import type { RootUser } from '~/utils/types'
 
 interface UserMenuProps {
   isDesktop: boolean
-  user: RootUser | null
+  userData: RootUser | null
   logout: () => void
 }
 
-const UserMenu = ({ isDesktop, user, logout }: UserMenuProps) => {
+const UserMenu = ({ isDesktop, userData, logout }: UserMenuProps) => {
   const location = useLocation()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isActive = (link: string) => location.pathname === link
+  const user = userData && userData.user
   const rightMenu = [
     {
       name: 'Profile',
@@ -48,10 +49,12 @@ const UserMenu = ({ isDesktop, user, logout }: UserMenuProps) => {
           >
             {rightMenu.map((menu) => (
               <MenuItem
+                component={Link}
+                to={menu.url || ''}
                 key={menu.name}
                 onClick={
                   menu.func
-                    ? (e) => {
+                    ? () => {
                         menu.func()
                         handleClose()
                       }

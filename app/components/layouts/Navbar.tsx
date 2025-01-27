@@ -13,7 +13,7 @@ const Navbar = ({ setOpen, drawerWidth }: NavbarProps) => {
 
   useEffect(() => {
     const auth = window.localStorage.getItem('user')
-    if (auth && auth !== 'null') setUser({ user: { username: 'xxxx' } })
+    if (auth && auth !== 'null') setUser(JSON.parse(auth))
 
     if (!auth || auth === 'null') {
       const fetchUserData = async () => {
@@ -27,7 +27,19 @@ const Navbar = ({ setOpen, drawerWidth }: NavbarProps) => {
     }
 
     setTimeout(() => {
-      setUser({ user: { username: 'xxxx' } })
+      setUser({
+        jwt: 'xxxx',
+        user: {
+          username: 'xxxx',
+          email: 'xxxx',
+          provider: 'xxxx',
+          confirmed: true,
+          blocked: false,
+          createdAt: 'xxxx',
+          updatedAt: 'xxxx',
+          id: 1,
+        },
+      })
     }, 1000)
   }, [])
 

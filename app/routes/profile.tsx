@@ -1,12 +1,12 @@
 import Layout from '~/components/layouts/Layouts'
-const Contact = () => {
+const SubHome = () => {
   return (
     <Layout>
       <div>
-        <h1>Contact</h1>
+        <h1>Profile</h1>
       </div>
     </Layout>
   )
 }
 
-export default Contact
+export default SubHome

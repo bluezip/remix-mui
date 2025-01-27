@@ -2,7 +2,7 @@ import { Container } from '@mui/material'
 import { useState } from 'react'
 
 import Navbar from '~/components/layouts/Navbar'
-import Sidebar from '~/components/layouts/sidebar'
+import Sidebar from '~/components/layouts/Sidebar'
 import ClientOnly from '~/utils/ClientOnly'
 
 const drawerWidth = 250
